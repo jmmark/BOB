@@ -97,8 +97,8 @@ def on_epoch_end(epoch, logs):
 print_callback = LambdaCallback(on_epoch_end=on_epoch_end)
 
 model.fit(x, y,
-          batch_size=256,
-          epochs=60,
+          batch_size=128,
+          epochs=100,
           callbacks=[print_callback])
 
 model.save("GBV_rnn.h5")
