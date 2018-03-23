@@ -29,8 +29,19 @@ def overlapping_verses(lines, n):
 
     return(verses)
 
+def non_overlapping_verses(lines, n):
+    '''takes all the individual lines in lines
+    and creates n-line verses, overlapping '''
+    last_start = len(lines) - n + 1
+    verses = []
+    for i in range(0, last_start, n):
+        verse = ' '.join(lines[i:i+n]) + ' <eov>'
+        verses += [verse]
+
+    return(verses)
+
 if __name__ == "__main__":
     lines = load_n_scrub('all_gbv_lyrics.txt')
-    verses = overlapping_verses(lines, 4)
-    print('\n'.join(lines[-4:]))
-    print('\n'.join(verses[-1:]))
+    verses = non_overlapping_verses(lines, 4)
+    print('\n'.join(lines[:8]))
+    print('\n'.join(verses[:2]))
